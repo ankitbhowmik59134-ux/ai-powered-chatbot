@@ -2,6 +2,10 @@
 
 Independent Java project (not part of the multiple-disease-prediction app).
 
+## Live site
+
+https://ai-powered-chatbot-v448.onrender.com
+
 ## Deploy
 
 Vercel cannot host this Java server. Use Render:
