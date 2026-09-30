@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: ai-powered-chatbot
+    runtime: docker
+    plan: free
+    healthCheckPath: /
+    envVars:
+      - key: JAVA_TOOL_OPTIONS
+        value: -XX:MaxRAMPercentage=75.0
+      - key: SPRING_H2_CONSOLE_ENABLED
+        value: "false"

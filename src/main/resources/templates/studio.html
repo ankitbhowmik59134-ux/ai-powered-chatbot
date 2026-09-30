@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Nova Studio — AI Chatbot</title>
+    <link rel="stylesheet" th:href="@{/css/studio.css?v=3}">
+</head>
+<body>
+<div class="orb orb-a"></div>
+<div class="orb orb-b"></div>
+<div class="shell">
+    <aside class="rail">
+        <div class="brand">
+            <span class="mark">N</span>
+            <div>
+                <strong>Nova Studio</strong>
+                <small th:text="${liveMode} ? 'Live model connected' : 'On-device studio engine'">engine</small>
+            </div>
+        </div>
+        <button class="new" id="newChat" type="button">New conversation</button>
+        <nav class="history" id="history"></nav>
+        <div class="rail-foot">Independent Java chatbot</div>
+    </aside>
+    <main class="stage">
+        <header class="top">
+            <button class="menu" id="menuBtn" type="button">Chats</button>
+            <div>
+                <h1 id="chatTitle">Pick a mind, then talk</h1>
+                <p id="chatMeta">Fast replies, saved threads, voice, and export.</p>
+            </div>
+            <div class="actions">
+                <button type="button" id="renameBtn">Rename</button>
+                <button type="button" id="exportBtn">Export</button>
+                <button type="button" class="danger" id="deleteBtn">Delete</button>
+            </div>
+        </header>
+        <section class="personas" id="personaRow"></section>
+        <section class="transcript" id="transcript"></section>
+        <form class="composer" id="composer">
+            <textarea id="input" rows="2" placeholder="Ask Nova Studio anything…"></textarea>
+            <div class="composer-bar">
+                <button type="button" id="voiceBtn">Mic</button>
+                <span id="status">Ready</span>
+                <button type="submit" class="send" id="sendBtn">Send</button>
+            </div>
+        </form>
+    </main>
+</div>
+<template id="emptyTemplate">
+    <div class="hero" id="emptyState">
+        <p class="eyebrow">AI-powered chatbot</p>
+        <h2>A quieter place to think out loud.</h2>
+        <p>Choose a persona and send a message. History stays on this machine.</p>
+        <div class="feature-grid">
+            <article><h3>5 personas</h3><p>Copilot, code, career, creative, focus.</p></article>
+            <article><h3>Instant studio</h3><p>No API key required for the demo engine.</p></article>
+            <article><h3>Voice + export</h3><p>Speak a prompt or download Markdown.</p></article>
+        </div>
+        <div class="starters" id="starters"></div>
+    </div>
+</template>
+<script th:inline="javascript">
+    window.NOVA = {
+        liveMode: /*[[${liveMode}]]*/ false,
+        personas: /*[[${personas}]]*/ []
+    };
+</script>
+<script th:src="@{/js/studio.js?v=4}"></script>
+</body>
+</html>
